@@ -1,16 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useSelector } from "react-redux";
+import ToDoItem from "./ToDoItem";
 
 const AddToDoList = () => {
-  const toDos = useSelector((state)=>state.toDo)
+  const toDos = useSelector((state) => state.toDos);
   console.log(toDos)
   return (
-    <div>
-      {toDos.map((toDo)=>
-        <li>{toDo.text}</li>
-      )}
-    </div>
-  )
-}
+    <ol>
+      {toDos.map((toDo) => (
+        <ToDoItem key={toDo.id} toDo={toDo} />
+      ))}
+    </ol>
 
-export default AddToDoList
+  );
+};
+
+export default AddToDoList;
