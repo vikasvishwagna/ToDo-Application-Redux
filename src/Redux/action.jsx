@@ -16,7 +16,7 @@ export const toggleToDo = (id) => ({
 export const editToDo = (id,newText) => ({
   type : EDIT_TODO,
   payLoad : {id, newText}
-})
+}) 
 
 export const deleteToDo = (id)=>({
   type : DELETE_TODO,

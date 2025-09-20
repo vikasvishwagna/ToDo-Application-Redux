@@ -6,7 +6,7 @@ const AddToDoList = () => {
   const toDos = useSelector((state) => state.toDos);
   console.log(toDos)
   return (
-    <ol>
+    <ol  className="space-y-3">
       {toDos.map((toDo) => (
         <ToDoItem key={toDo.id} toDo={toDo} />
       ))}
