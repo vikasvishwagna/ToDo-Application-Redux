@@ -1,5 +1,5 @@
 import { compose } from "redux";
-import { ADD_TODO, TOGGLE_TODO } from "./action";
+import { ADD_TODO, EDIT_TODO, TOGGLE_TODO, DELETE_TODO } from "./action";
 
 const initialState = {
   toDos: [],
@@ -20,9 +20,29 @@ const toDoReducer = (state = initialState, action) => {
       return {
         ...state,
         toDos: state.toDos.map((todo) =>
-          todo.id == action.payLoad ? { ...todo, completed: !todo.completed } : todo
+          todo.id == action.payLoad
+            ? { ...todo, completed: !todo.completed }
+            : todo
         ),
       };
+
+    case EDIT_TODO:
+      return {
+        ...state,
+        toDos: state.toDos.map((todo) =>
+          todo.id == action.payLoad.id
+            ? { ...todo, text: action.payLoad.newText }
+            : todo
+        ),
+      };
+
+      case DELETE_TODO:
+        return {
+          ...state,
+          toDos: state.toDos.filter((todo)=>
+            todo.id !== action.payLoad
+           )
+        }
 
     default:
       return state;
